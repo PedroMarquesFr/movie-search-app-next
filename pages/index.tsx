@@ -1,15 +1,14 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import Link from "next/link";
+import Home from "../components/Home";
+import Layout from "../components/Layout";
+import MoviesContext from "../contextAPI/MoviesContext";
 
 const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+  <MoviesContext>
+    <Layout title="Home | Movie Search">
+      <Home/>
+    </Layout>
+  </MoviesContext>
+);
 
-export default IndexPage
+export default IndexPage;
