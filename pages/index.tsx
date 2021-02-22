@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Home from "../components/Home";
 import Layout from "../components/Layout";
 import MoviesContext from "../contextAPI/MoviesContext";
