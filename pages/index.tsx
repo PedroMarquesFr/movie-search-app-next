@@ -1,4 +1,3 @@
-import { GetStaticProps } from 'next'
 import Home from "../components/Home";
 import Layout from "../components/Layout";
 import MoviesContext from "../contextAPI/MoviesContext";
@@ -14,6 +13,3 @@ const IndexPage = () => (
 export default IndexPage;
 
 
-// export const getStaticProps:getStaticProps = async () => {
-
-// }

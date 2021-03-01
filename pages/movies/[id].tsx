@@ -1,22 +1,30 @@
 import React from "react";
-// import { GetStaticProps, GetStaticPaths } from "next";
-import { Movie } from "../../interfaces";
+import { GetServerSideProps } from "next";
+import { MovieDetails } from "../../interfaces";
+import { filmDetails } from "../../services/api";
 
 // import { Container } from './styles';
 
-const Details: React.FC<{ movie: Movie }> = ({ movie }) => {
-  return <div>ola</div>;
+const Details: React.FC<{ movie: MovieDetails }> = ({ movie }) => {
+  console.log(movie);
+  return (
+    <div>
+      <span>{movie.Title}</span>
+      <span>{movie.Rated}</span>
+      <span>{movie.Year}</span>
+      <img src={movie.Poster}></img>
+    </div>
+  );
 };
 
 export default Details;
 
-// export const getStaticPaths: GetStaticPaths = async () => {
-//     // Get the paths we want to pre-render based on users
-//     const paths = sampleUserData.map((user) => ({
-//       params: { id: user.id.toString() },
-//     }))
-  
-//     // We'll pre-render only these paths at build time.
-//     // { fallback: false } means other routes should 404.
-//     return { paths, fallback: false }
-//   }
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { id } = context.query;
+  const obj = await filmDetails(id);
+  console.log(obj);
+  console.log(id);
+  return {
+    props: { movie: obj },
+  };
+};

@@ -10,13 +10,16 @@ export async function searchByQuery(movie: string) {
     });
 }
 
-export async function searchRandom() {
+export async function filmDetails(id: string |string[]) {
   return axios
-    .get(
-      ``
-    )
-    .then((r) => {
-      console.log(r.status);
-      return r.request.response;
-    });
+    .get(`http://www.omdbapi.com/?i=${id}&apikey=${key}`)
+    .then((r) => r.data)
+    .catch((deupau) => deupau);
+}
+
+export async function searchRandom() {
+  return axios.get(``).then((r) => {
+    console.log(r.status);
+    return r.request.response;
+  });
 }
