@@ -6,7 +6,7 @@ export async function searchByQuery(movie: string) {
     .get(`http://www.omdbapi.com/?s=${movie}&apikey=${key}`)
     .then((r) => {
       console.log(r);
-      return r.data.Search;
+      return r.data;
     });
 }
 

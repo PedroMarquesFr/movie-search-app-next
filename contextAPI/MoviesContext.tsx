@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Context from "./setup";
 import { searchByQuery } from "../services/api";
-import { Movie } from "../interfaces";
+import { DataResponse, Movie } from "../interfaces";
 
 const MoviesContext: React.FC = ({ children }) => {
   const [isFetching, setIsFetching] = useState<boolean>(false);
@@ -10,9 +10,12 @@ const MoviesContext: React.FC = ({ children }) => {
 
   const handleFetchByQuery = async (term: string) => {
     setIsFetching(true);
-    const resp:Movie[] = await searchByQuery(term);
-    setMovieArray(resp);
+    const resp: DataResponse = await searchByQuery(term);
     setIsFetching(false);
+    if (resp.Response === "false") {
+      return setdoesDataExists(false);
+    }
+    setMovieArray(resp.Search);
     setdoesDataExists(true);
   };
 

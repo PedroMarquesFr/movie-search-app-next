@@ -17,6 +17,12 @@ export type Movie = {
   Poster: string;
 };
 
+export type DataResponse = {
+  Response: string;
+  Search: Movie[];
+  TotalResults: string;
+};
+
 export type MovieDetails = {
   Title: string;
   Year: string;

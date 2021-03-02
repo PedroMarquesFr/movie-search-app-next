@@ -14,16 +14,17 @@ const MoviesWrap: React.FC = () => {
   useEffect(() => {
     handleFetchByQuery("spider");
   }, []);
+  console.log(isFetching)
   if (isFetching) {
     return <span>Loading...</span>;
   }
   if (!doesDataExists) {
-    return <span>Search a movie</span>;
+    return <span>Search a movie or there is no movie for this term</span>;
   }
   return (
     <div>
       {movieArray.map((movie) => (
-        <Movie movie={movie} />
+        <Movie movie={movie} key={movie.imdbID} />
       ))}
     </div>
   );
