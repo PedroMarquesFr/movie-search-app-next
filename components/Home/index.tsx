@@ -1,12 +1,18 @@
-import React from "react";
+import React,{useContext} from "react";
+import Context from "../../contextAPI/setup";
 import MoviesWrap from "../MoviesWrap";
 
 // import { Container } from './styles';
 
 const Home: React.FC = () => {
+  const {
+    doesDataExists,
+    isFetching,
+  } = useContext(Context);
   return (
     <div>
-      <MoviesWrap />
+      {isFetching && <span>Loading...</span>}
+      {doesDataExists && <MoviesWrap />}
     </div>
   );
 };

@@ -12,7 +12,7 @@ const MoviesContext: React.FC = ({ children }) => {
     setIsFetching(true);
     const resp: DataResponse = await searchByQuery(term);
     setIsFetching(false);
-    if (resp.Response === "false") {
+    if (!resp.Search) {
       return setdoesDataExists(false);
     }
     setMovieArray(resp.Search);
