@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Context from "../../contextAPI/setup";
 import Movie from "./MovieContainer";
 
-// import { Container } from './styles';
+import { Container } from './styles';
 
 const MoviesWrap: React.FC = () => {
   const {
@@ -10,11 +10,11 @@ const MoviesWrap: React.FC = () => {
   } = useContext(Context);
 
   return (
-    <div>
+    <Container>
       {movieArray.map((movie) => (
         <Movie movie={movie} key={movie.imdbID} />
       ))}
-    </div>
+    </Container>
   );
 };
 

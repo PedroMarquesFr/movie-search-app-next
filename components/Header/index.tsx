@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import Context from "../../contextAPI/setup";
 
-// import { Container } from './styles';
+import { Head, Sec } from "./styles";
 let timer: any = null;
 const Header: React.FC = () => {
   const { handleFetchByQuery } = useContext(Context);
@@ -18,14 +18,17 @@ const Header: React.FC = () => {
     stopTimer();
     setMovie(e.target.value);
     timer = setTimeout(() => {
-        handleFetchByQuery(movie);
+      handleFetchByQuery(movie);
     }, 500);
   };
   return (
-    <header>
-      <h2>MovieSearcher</h2>
-      <input placeholder="Busque por um filme" onChange={handleDelay} />
-    </header>
+    <Head>
+      <Sec>
+        <h2>MovieSearcher</h2>
+        <input placeholder="Busque por um filme" onChange={handleDelay} />
+        <i></i>
+      </Sec>
+    </Head>
   );
 };
 

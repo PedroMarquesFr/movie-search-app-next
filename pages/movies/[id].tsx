@@ -20,6 +20,7 @@ const Details: React.FC<{ movie: MovieDetails }> = ({ movie }) => {
 export default Details;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  console.log(context.query);
   const { id } = context.query;
   const obj = await filmDetails(id);
   console.log(obj);
